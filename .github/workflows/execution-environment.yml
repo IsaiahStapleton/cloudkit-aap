@@ -48,7 +48,7 @@ jobs:
       - name: Push execution environment image
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          IMAGE_NAME="ghcr.io/${{ github.repository }}"
+          IMAGE_NAME="ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
           IMAGE_NAME_LATEST="${IMAGE_NAME}:latest"
           IMAGE_NAME_SHA="${IMAGE_NAME}:${{ github.sha }}"
 
